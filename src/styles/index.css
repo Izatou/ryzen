@@ -1,0 +1,30 @@
+html, body {
+    background-color: white;
+    height: 100%;
+    overflow: hidden;
+}
+
+#root {
+    height: 100%;
+    display: flex;
+}
+
+.hg-theme-default .hg-button {
+    font-size: 1.4rem!important;
+    height: 50px!important;
+    flex-basis: 0%!important;
+}
+
+.hg-theme-default .hg-button.spaceBtn {
+    width: 75%!important;
+    flex-basis: 75%!important;
+}
+
+.keyboard-tall-button .hg-button {
+    height: 80px!important;
+}
+
+.keyboard-tall-button .hg-button span {
+    font-size: 1.5rem!important;
+    font-weight: 700!important;
+}

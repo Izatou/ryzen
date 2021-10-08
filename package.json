@@ -1,0 +1,119 @@
+{
+  "name": "id.inose.screening.v2",
+  "version": "0.0.22",
+  "description": "Aplikasi iNose",
+  "main": "electron/index.js",
+  "repository": "https://github.com/inoseofficial/inose-screening-v2.git",
+  "author": "mardikarifqi <rifweb.android@gmail.com>",
+  "homepage": "./",
+  "maintainers": [
+    "azzamjiul <azzam.jiul@gmail.com>",
+    "mardikarifqi <rifweb.android@gmail.com>"
+  ],
+  "dependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
+    "@tailwindcss/postcss7-compat": "^2.0.2",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "autoprefixer": "9",
+    "chart.js": "^2.9.4",
+    "chartjs-plugin-annotation-more": "^0.5.8",
+    "electron-log": "^4.3.5",
+    "electron-promise-ipc": "^2.2.4",
+    "electron-updater": "^4.3.5",
+    "md5": "^2.3.0",
+    "ml-anova": "^1.1.5",
+    "node-rsa": "^1.1.1",
+    "postcss": "^8.2.4",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.1",
+    "simple-keyboard": "^2.32.86",
+    "temp": "^0.9.4",
+    "unzipper": "^0.10.11",
+    "web-vitals": "^0.2.4"
+  },
+  "scripts": {
+    "watch:css": "postcss src/styles/tailwind.css -o src/styles/main.css",
+    "run:react": "yarn watch:css && run-script-os",
+    "run:react:default": "export BROWSER=none && export ELECTRON_START_URL=http://localhost:3000 && react-scripts start",
+    "run:react:windows": "set BROWSER=none && set ELECTRON_START_URL=http://localhost:3000 && react-scripts start",
+    "run:electron": "run-script-os",
+    "run:electron:default": "export ELECTRON_START_URL=http://localhost:3000 && electron .",
+    "run:electron:windows": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
+    "build": "yarn clean && yarn watch:css && react-scripts build",
+    "build-electron": "cp -r electron/. build/electron && cp -r python/. build/python && cp -r res/. build/res && cp -r utils/. build/utils",
+    "package-linux": "electron-builder build --linux -c.extraMetadata.main=electron/index.js --publish never",
+    "package-mac": "electron-builder build --mac -c.extraMetadata.main=electron/index.js --publish never",
+    "clean": "rm -rf dist build"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^11.2.1",
+    "electron-builder": "^22.9.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "postcss-cli": "^8.3.1",
+    "prettier": "2.3.0",
+    "run-script-os": "^1.1.5",
+    "tailwindcss": "npm@tailwindcss/postcss7-compat@^2.0.2"
+  },
+  "build": {
+    "appId": "id.inose.screening.v2",
+    "productName": "inose-c19",
+    "copyright": "inose official",
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "armv7l"
+          ]
+        }
+      ],
+      "icon": "electron/assets/mac/icon.icns"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "electron/assets/mac/icon.icns"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "python/**/*",
+      "res/**/*",
+      "utils/**/*",
+      "electron/**/*"
+    ],
+    "asar": false,
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "https://update.inose.id/screening"
+      }
+    ]
+  }
+}

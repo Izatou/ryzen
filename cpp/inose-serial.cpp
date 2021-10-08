@@ -1,0 +1,6 @@
+#include <iostream>
+
+int main(void)
+{
+    std::cout << "3664317C9F77FA5FFFB62EFFA001C840E7B35F55B29AB41502CF16E9A63D12AE";
+}
